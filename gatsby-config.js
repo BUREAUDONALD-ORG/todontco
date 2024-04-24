@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `todontco`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://todontcoo.netlify.app`,
   },
   plugins: [
     "gatsby-plugin-sass",
