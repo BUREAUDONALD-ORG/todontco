@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
+    "decap-cms-app": "^3.1.10",
     "gatsby": "^5.13.3",
+    "gatsby-plugin-decap-cms": "^4.0.4",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
