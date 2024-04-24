@@ -1,0 +1,182 @@
+@mixin block-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@mixin block {
+  display: flex;
+  width: 100%;
+  max-width: $max-width;
+  padding: $two $side-padding;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    padding: $two $side-padding-responsive;
+  }
+}
+
+.layout__app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  background: $complementary;
+}
+
+// Welcome to the world of typography dependent positioning.
+$header-height-full: $flh--t--title * 3 + $unit * 6;
+$header-height-small: $flh--t--header-1 + $unit * 2;
+$header-height-full-responsive: $flh--t--title-responsive * 3 +
+  $flh--t--header-1-responsive * 5 + $unit * 8;
+$header-height-small-responsive: $flh--t--header-1-responsive + $unit * 2;
+
+.layout__header-container {
+  @include block-container;
+  height: $header-height-full;
+
+  flex-direction: column;
+  align-items: center;
+
+  background: $night;
+}
+
+.layout__header-container[data-size='small'] {
+  position: sticky;
+  position: -webkit-sticky;
+  top: ($header-height-full - $header-height-small) * -1;
+  z-index: 100;
+}
+
+.layout__header {
+  @include block;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+  z-index: 100;
+  overflow: hidden;
+  padding: $unit $side-padding;
+  margin-bottom: -1px; // Fix for Chrome layout issue
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .layout__header-container {
+    height: $header-height-full-responsive;
+  }
+
+  .layout__header {
+    flex-direction: column;
+    padding: $unit $side-padding-responsive;
+  }
+
+  .layout__header-container[data-size='small'] {
+    top: ($header-height-full-responsive - $header-height-small-responsive) * -1;
+    .layout__header {
+      flex-direction: row;
+    }
+  }
+}
+
+.layout__checkboxes-container {
+  @include block-container;
+  background: $complementary;
+  padding-bottom: unset;
+}
+
+.layout__checkboxes {
+  @include block;
+  padding: $unit $side-padding 0;
+  flex-direction: column;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .layout__checkboxes {
+    padding-bottom: 0;
+  }
+}
+
+.layout__navbar-container {
+  @include block-container;
+  position: sticky;
+  position: -webkit-sticky;
+  top: calc(
+    #{$header-height-small} - #{$unit} - 1px
+  ); // Rounding optical correction
+  z-index: 95;
+  width: 100%;
+  background: $complementary;
+}
+
+.layout__navbar {
+  @include block;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-height: 7rem;
+  padding: 1.25rem $side-padding;
+}
+
+.layout__line-container {
+  display: block;
+  border-top: $border-width dashed $day;
+  padding-bottom: $unit * 6;
+  width: 100%;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .layout__navbar-container {
+    top: #{$header-height-small-responsive - 1.5rem};
+  }
+  .layout__navbar {
+    padding: $unit;
+  }
+}
+
+.layout__products-container {
+  background: $day;
+}
+
+.layout__product-container {
+  @include block-container;
+  position: relative;
+  background: $day;
+  overflow: hidden;
+}
+
+.layout__product {
+  @include block;
+  background: $day;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.layout__form-container {
+  @include block-container;
+  background: $complementary;
+  position: relative; // For animation overlapping
+  z-index: 20; // for animation overlapping
+}
+
+.layout__form {
+  @include block;
+  flex-direction: column;
+}
+
+.layout__social-container {
+  @include block-container;
+  background: $complementary;
+}
+
+.layout__social {
+  @include block;
+  flex-direction: column;
+}
+
+.layout__credits-container {
+  @include block-container;
+  padding-bottom: $unit * 5;
+  background: $night;
+}
+
+.layout__credits {
+  @include block;
+  flex-direction: column;
+}

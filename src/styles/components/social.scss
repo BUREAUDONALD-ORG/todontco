@@ -1,0 +1,22 @@
+.social {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.social__hashtag {
+  width: 100%;
+}
+
+.social__text-container {
+  padding: $unit 0 0 0;
+}
+
+.social__text {
+  @include t--body-black;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .social__text {
+    @include t--body-black;
+  }
+}

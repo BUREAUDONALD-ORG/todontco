@@ -1,0 +1,47 @@
+@use "sass:math";
+
+.markdown {
+  padding-bottom: $unit;
+  h1 {
+    @include t--header-0;
+    padding: $unit 0;
+    padding-bottom: $unit;
+  }
+
+  h2 {
+    @include t--header-2;
+    color: $complementary;
+    padding-bottom: $unit;
+    word-wrap: break-word;
+  }
+
+  h3 {
+    @include t--header-2;
+    padding: $unit 0;
+    padding-bottom: $unit * 0.2;
+  }
+
+  h4 {
+    @include t--header-3;
+    padding: $unit 0;
+    padding-bottom: $unit * 0.2;
+  }
+
+  p {
+    @include t--body;
+    padding-bottom: math.div($unit * 4, 3);
+    max-width: 30rem;
+  }
+
+  a {
+    color: $complementary;
+  }
+
+  strong {
+    font-family: nittigrotesk-normal;
+  }
+
+  a:hover {
+    border-bottom: $border-width solid $complementary;
+  }
+}

@@ -1,0 +1,149 @@
+@font-face {
+  font-family: 'nittigrotesk-normal';
+  src: url('../../static/fonts/nittigrotesk-normal-v20.eot');
+  src: url('../../static/fonts/nittigrotesk-normal-v20.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'nittigrotesk-black';
+  src: url('../../static/fonts/nittigrotesk-black-v20.eot');
+  src: url('../../static/fonts/nittigrotesk-black-v20.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+$fs--t--title: 12rem;
+$flh--t--title: 7.5rem;
+$fs--t--title-responsive: 8rem;
+$flh--t--title-responsive: 5.5rem;
+$ls--t--title: -0.3rem;
+
+@mixin t--title {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--title;
+  line-height: $flh--t--title;
+  vertical-align: baseline;
+  // letter-spacing: $ls--t--title;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--title-responsive;
+    line-height: $flh--t--title-responsive;
+  }
+}
+
+$fs--t--header-0: 6rem;
+$flh--t--header-0: 5rem;
+$fs--t--header-0-responsive: 6rem;
+$flh--t--header-0-responsive: 5rem;
+$ls--t--header-0: -0.1rem;
+
+@mixin t--header-0 {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--header-0;
+  line-height: $flh--t--header-0;
+  vertical-align: baseline;
+  letter-spacing: $ls--t--header-0;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--header-0-responsive;
+    line-height: $flh--t--header-0-responsive;
+  }
+}
+
+$fs--t--header-1: 4rem;
+$flh--t--header-1: 4rem;
+$fs--t--header-1-responsive: 2.5rem;
+$flh--t--header-1-responsive: 2.5rem;
+$ls--t--header-1: -0.1rem;
+
+@mixin t--header-1 {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--header-1;
+  line-height: $flh--t--header-1;
+  vertical-align: baseline;
+  // letter-spacing: $ls--t--header-1;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--header-1-responsive;
+    line-height: $flh--t--header-1-responsive;
+  }
+}
+
+$fs--t--header-2: 3rem;
+$flh--t--header-2: 3rem;
+$fs--t--header-2-responsive: 1.5rem;
+$flh--t--header-2-responsive: 1.5rem;
+$ls--t--header-2: -0.1rem;
+
+@mixin t--header-2 {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--header-2;
+  line-height: $flh--t--header-2;
+  vertical-align: baseline;
+  // letter-spacing: $ls--t--header-2;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--header-2-responsive;
+    line-height: $flh--t--header-2-responsive;
+  }
+}
+
+$fs--t--header-3: 1.5rem;
+$flh--t--header-3: 1.5rem;
+$fs--t--header-3-responsive: 1.5rem;
+$flh--t--header-3-responsive: 1.5rem;
+$ls--t--header-3: -0.03rem;
+
+@mixin t--header-3 {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--header-3;
+  line-height: $flh--t--header-3;
+  vertical-align: baseline;
+  // letter-spacing: $ls--t--header-3;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--header-3-responsive;
+    line-height: $flh--t--header-3-responsive;
+  }
+}
+
+$fs--t--body-black: 1rem;
+$flh--t--body-black: 1rem;
+$fs--t--body-black-responsive: 1rem;
+$flh--t--body-black-responsive: 1rem;
+
+@mixin t--body-black {
+  font-family: nittigrotesk-black;
+  font-size: $fs--t--body-black;
+  line-height: $flh--t--body-black;
+  vertical-align: baseline;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--body-black-responsive;
+    line-height: $flh--t--body-black-responsive;
+  }
+}
+
+$fs--t--body: 1.2rem;
+$flh--t--body: 1.5rem;
+$fs--t--body-responsive: 1rem;
+$flh--t--body-responsive: 1.5rem;
+
+@mixin t--body {
+  font-family: nittigrotesk-normal;
+  font-size: $fs--t--body;
+  line-height: $flh--t--body;
+  vertical-align: baseline;
+  @media (min-width: 0px) and (max-width: $bp-small) {
+    font-size: $fs--t--body-responsive;
+    line-height: $flh--t--body-responsive;
+  }
+}
+
+@each $min, $max, $size in (0, 300, 13), (300, 400, 14), (400, 500, 15),
+  (500, 600, 18), (600, 700, 21), (700, 800, 26), (800, 900, 13),
+  (900, 1000, 14), (1000, 1100, 15), (1100, 1200, 16), (1200, 1400, 19),
+  (1400, 1600, 20), (1600, 9999, 20)
+{
+  @media (min-width: $min + px) and (max-width: $max + px) {
+    html {
+      font-size: $size + px;
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@use "sass:math";
+
+.product__content {
+  background-color: $day;
+  position: relative;
+  height: 100%;
+  padding: $unit * 4 0 $unit * 4 $unit;
+  width: calc(#{200% / 3} + #{$unit});
+}
+
+.product__content .btn {
+  width: calc(100% / 2 - #{$half});
+  margin-bottom: 1rem;
+}
+
+.product__title {
+  @include t--header-0;
+  padding-bottom: $unit;
+  word-wrap: break-word;
+}
+
+.product__subtitle {
+  @include t--header-2;
+  color: $complementary;
+  padding-bottom: $unit;
+  word-wrap: break-word;
+}
+
+// default product horizontal left!
+// explicit: .layout__product-container[data-layout="horizontal-left"]
+.product__content {
+  margin-left: unset;
+  margin-right: calc(100% / 3 - #{math.div($unit * 2, 3)});
+  padding: $unit * 4 $unit $unit * 8 0;
+}
+
+// Horizontal left -> Default
+.product__image {
+  position: absolute;
+  // think from this one, the opposite has inversed logic
+  // image at the top-right side (content left)
+  // a third of the gridsize + half of the total space outside the grid
+  min-width: calc((100vw / 3) + #{$unit} * 1 / 3);
+  height: 100%;
+  // start at the middle + a sixt + a gutter
+  left: calc(100vw * 4 / 6 - #{$unit} * 1 / 3);
+}
+
+.product__image-outer {
+  height: 100%;
+}
+
+.product__image-inner {
+  height: 100%;
+}
+
+// however max-width starts to play up
+@media (min-width: #{$max-width}) and (max-width: 9999px) {
+  .product__image {
+    // so VWs arent reliable anymore, the grid is different (but fixed)
+    // the base is replaced by the max-width and gets the the right margin added
+    min-width: calc((#{$max-width} / 3) + ((100vw - #{$max-width}) / 2));
+    // start at the middle + a sixt + a gutter
+    // the starting position is determined by the maxwidth too
+    left: calc(
+      (#{$max-width} * 4 / 6 + ((100vw - #{$max-width}) / 2) - #{$unit} * 2 / 3)
+    );
+  }
+}
+
+// Horizontal right
+.layout__product-container[data-layout='horizontal-right'] {
+  .product__content {
+    margin-left: calc(100% / 3 - #{$unit} * 2 / 3);
+    margin-right: unset;
+    padding: $unit * 4 0 $unit * 4 $unit;
+  }
+
+  .product__image {
+    // Unset default
+    left: unset;
+    right: calc(100vw * 4 / 6 - #{$unit} * 1 / 3);
+  }
+
+  @media (min-width: #{$max-width}) and (max-width: 9999px) {
+    .product__image {
+      // so VWs arent reliable anymore, the grid is different (but fixed)
+      // the base is replaced by the max-width and gets the the right margin added
+      min-width: calc((#{$max-width} / 3) + ((100vw - #{$max-width})));
+      // start at the middle + a sixt + a gutter
+      // the starting position is determined by the maxwidth too
+      right: calc(
+        (
+          #{$max-width} * 4 / 6 + ((100vw - #{$max-width}) / 2) - #{$unit} * 2 /
+            3
+        )
+      );
+    }
+  }
+}
+
+// Vertical
+.layout__product-container[data-layout='vertical'] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .product__content {
+    width: 100%;
+    margin-right: unset;
+    margin-left: unset;
+  }
+
+  .product__image {
+    position: relative;
+    left: unset;
+    width: 100%;
+  }
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .layout__product-container,
+  .layout__product-container[data-layout='horizontal-left'],
+  .layout__product-container[data-layout='horizontal-right'],
+  .layout__product-container[data-layout='vertical'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .layout__product {
+      position: relative;
+    }
+
+    .product__content {
+      width: 100%;
+      padding: $two 0 $two 0;
+      margin: 0;
+      .btn {
+        width: 100%;
+      }
+    }
+
+    .product__image {
+      position: relative;
+      left: unset;
+      right: unset;
+      width: 100%;
+      max-height: 25vh;
+    }
+  }
+}
+
+.layout__product-container[data-diapositive='true'] {
+  background: $night;
+
+  .layout__product {
+    background: $night;
+  }
+
+  .product__content {
+    background: $night;
+    .product__title {
+      color: $day;
+    }
+    .markdown {
+      color: $day;
+    }
+  }
+}

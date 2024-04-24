@@ -1,0 +1,165 @@
+.header__section {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - #{$unit * 1.5});
+  padding: 2rem 0;
+  justify-content: space-between;
+}
+
+.header__section:last-of-type {
+  display: flex;
+}
+
+.header__title {
+  @include t--title;
+  white-space: pre;
+  color: $day;
+}
+
+.header__line {
+  position: absolute;
+  opacity: 1;
+  bottom: 1rem;
+  left: calc(50% - #{0.3rem});
+  display: block;
+  height: ($header-height-full - 2rem);
+}
+
+.header__line-short {
+  opacity: 0;
+}
+
+.header__line-hz {
+  display: none;
+}
+
+.header__subtitle {
+  position: relative;
+  white-space: pre;
+  @include t--header-1;
+  line-height: 3.4rem;
+  color: $complementary;
+}
+
+.header__meta-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__author {
+  @include t--header-3;
+  color: $day;
+  border-bottom: $underline-width solid $night;
+  margin-bottom: -$underline-width;
+  cursor: pointer;
+}
+
+.header__contact {
+  @include t--header-3;
+  display: block;
+  color: $day;
+  align-self: flex-end;
+  border-bottom: $underline-width solid $night;
+  margin-bottom: -$underline-width;
+  cursor: pointer;
+}
+
+.header__author:hover a,
+.header__contact:hover {
+  border-bottom: $underline-width solid $day;
+}
+
+.layout__header-container[data-size="small"] {
+  .header__section {
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0 0;
+  }
+  .header__section:last-of-type {
+    justify-content: space-between;
+  }
+  .header__title {
+    @include t--header-1;
+    white-space: normal;
+  }
+
+  .header__subtitle {
+    @include t--header-3;
+    color: $complementary;
+    margin-bottom: 0.4rem;
+  }
+
+  .header__line {
+    display: none;
+    opacity: 0;
+  }
+
+  .header__line-short {
+    display: block;
+    opacity: 1;
+    height: ($header-height-small - 2rem);
+    align-self: flex-end;
+  }
+
+  .header__author {
+    display: none;
+  }
+
+  .header__contact {
+    margin-bottom: -$underline-width + 0.4rem;
+  }
+}
+
+@media (min-width: 0px) and (max-width: $bp-medium) {
+  .layout__header-container[data-size="small"] {
+    .header__subtitle {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .header__section {
+    padding: $unit 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .header__line-hz {
+    display: block;
+    width: 100%;
+  }
+
+  .header__line {
+    display: none;
+  }
+
+  .header__line-short {
+    display: none;
+  }
+
+  .header__author {
+    padding-top: $unit * 3;
+    position: relative;
+  }
+
+  .layout__header-container[data-size="small"] {
+    .header__section:last-of-type {
+      flex: 1 0 0;
+    }
+    .header__subtitle {
+      display: none;
+    }
+    .header__line-short {
+      display: none;
+    }
+    .header__line-hz {
+      display: none;
+      width: 100%;
+    }
+
+    .header__contact {
+      margin-bottom: 0.1rem;
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@use "sass:math";
+
+.btn__container {
+  display: flex;
+  padding-top: $unit;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .btn__container {
+    flex-direction: column;
+  }
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: $night;
+  color: $day;
+  width: calc(100% / 3 - #{math.div($unit * 2, 3)});
+  margin-right: $unit;
+  cursor: pointer;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .btn {
+    width: 100%;
+  }
+}
+
+.btn__text {
+  @include t--body-black;
+  padding: $unit;
+}
+
+.btn[data-diapositive='true'] {
+  background: $day;
+  cursor: normal;
+
+  .btn__text {
+    color: $night;
+  }
+}
+
+.btn:hover,
+.btn[data-diapositive='true']:hover {
+  background: $complementary;
+
+  .btn__text {
+    color: $day;
+  }
+}
+
+.btn[data-type='point'] {
+  background: unset;
+  flex-direction: column;
+  margin: 0;
+  .btn__text {
+    @include t--body-black;
+    color: $day;
+    border: $border-width solid $day;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.btn__arrow {
+  width: 1.6rem;
+}
+
+.btn[data-type='large'] {
+  width: calc(50% - #{$half});
+
+  .btn__text {
+    @include t--header-3;
+  }
+}
+
+.btn[data-type='large']:hover {
+  background: $day;
+
+  .btn__text {
+    color: $night;
+  }
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .btn[data-type='large'] {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.btn[data-type='image'] {
+  .btn__img {
+    height: $two;
+    width: $two;
+    margin: $unit $unit $unit 0;
+  }
+
+  .btn__img--hover {
+    display: none;
+  }
+}
+
+.btn[data-type='image']:hover {
+  background: $day;
+  color: $night;
+
+  .btn__text {
+    color: $night;
+  }
+
+  .btn__img {
+    display: none;
+  }
+
+  .btn__img--hover {
+    display: block;
+  }
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .btn[data-type='image'] {
+    margin: 0 0 $unit 0;
+  }
+}

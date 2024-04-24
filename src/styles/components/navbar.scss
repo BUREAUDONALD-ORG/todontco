@@ -1,0 +1,65 @@
+@use "sass:math";
+
+.navbar__item {
+  width: calc(100% / 3 - #{math.div($unit * 2, 3)});
+  height: $fs--t--header-3 + $two;
+  padding: $unit;
+  margin-right: $unit;
+
+  background-color: $day;
+  cursor: pointer;
+
+  .navbar__item-title {
+    color: $night;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.navbar__item:last-of-type {
+  margin-right: 0;
+}
+
+.layout__navbar > .btn[data-type='point'] {
+  // Real oddness here, don't understand why correcting with sidepadding is not enough
+  width: calc((100% - #{$side-padding * 2}) / 3 - #{math.div($unit * 2, 3)});
+  position: absolute;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .layout__navbar > .btn[data-type='point'] {
+    width: calc((100% - #{$unit * 2}));
+  }
+}
+
+.navbar__item:hover {
+  background: $night;
+  .navbar__item-title {
+    color: $day;
+  }
+}
+
+.navbar__item-title {
+  @include t--header-3;
+  color: $day;
+}
+
+.navbar__item--active {
+  background: $night;
+  .navbar__item-title {
+    color: $day;
+  }
+}
+
+.navbar__item-title--responsive {
+  display: none;
+}
+
+@media (min-width: 0px) and (max-width: $bp-small) {
+  .navbar__item-title {
+    display: none;
+  }
+  .navbar__item-title--responsive {
+    display: block;
+  }
+}

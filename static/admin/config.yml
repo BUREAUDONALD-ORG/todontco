@@ -7,18 +7,236 @@ public_folder: /img
 site_url: https://todontcoo.netlify.app
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
+  - name: "site"
+    label: "Site"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "head"
+        label: "Head Informatie"
+        file: "content/frontpage/site/head.md"
+        fields:
+          - { label: "Head Title", name: "title", widget: "string" }
+          - label: "SEO Tags"
+            name: "tags"
+            widget: "list"
+            fields:
+              - { label: "Tag", name: "tagName", widget: "string" }
+          - { label: "description", name: "description", widget: "text" }
+          - {
+              label: "Open Graph Image",
+              name: "openGraphImage",
+              widget: image,
+              media_folder: "../../../static/img/",
+            }
+
+      - name: "header"
+        label: "Header"
+        file: "content/frontpage/site/header.md"
+        fields:
+          - { label: "Header Title", name: "title", widget: "text" }
+          - { label: "Sub Title", name: "subTitle", widget: "text" }
+          - { label: "Sub Title Small", name: "subTitleSmall", widget: "text" }
+          - label: "Author"
+            name: "author"
+            widget: "object"
+            fields:
+              - { label: "prefix", name: "prefix", widget: "string" }
+              - { label: "name", name: "name", widget: "string" }
+              - { label: "link", name: "link", widget: "string" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+
+      - name: "checkboxes"
+        label: "Checkboxes"
+        file: "content/frontpage/site/checkboxes.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Pointer button", name: "footer", widget: "string" }
+
+      - name: "form"
+        label: "Formuliergegevens"
+        file: "content/frontpage/site/form.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "fields"
+            name: "fields"
+            widget: "list"
+            fields:
+              - { label: "Field Text", name: "text", widget: "string" }
+          - { label: "ccField", name: "ccField", widget: "text" }
+          - { label: "Submit", name: "submit", widget: "string" }
+          - {
+              label: "Submit Button After Submit",
+              name: "submitResponse",
+              widget: "string",
+            }
+          - {
+              label: "submitExpandedResponse",
+              name: "submitExpandedResponse",
+              widget: "string",
+            }
+          - { label: "mailTo", name: "mailTo", widget: "string" }
+
+      - name: "social"
+        label: "Social Media"
+        file: "content/frontpage/site/social.md"
+        fields:
+          - label: "Social Media Text"
+            name: "text"
+            widget: "list"
+            fields:
+              - { label: "Line", name: "line", widget: "string" }
+          - label: "Hashtag Properties"
+            name: "hashtag"
+            widget: "object"
+            fields:
+              - { label: "Hovertext (Alt)", name: "alt", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+              - {
+                  label: "Image",
+                  name: "image",
+                  widget: image,
+                  media_folder: "../../../static/img/",
+                }
+          - label: "Social Media Buttons"
+            name: "btn"
+            create: false
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Link", name: "link", widget: string }
+              - label: "Images"
+                name: "images"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Default",
+                      name: "normal",
+                      widget: image,
+                      media_folder: "../../../static/img/",
+                    }
+                  - {
+                      label: "Diapositive",
+                      name: "inverse",
+                      widget: image,
+                      media_folder: "../../../static/img/",
+                    }
+
+      - name: "credits"
+        label: "Credits"
+        file: "content/frontpage/site/credits.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Authors text", name: "authorsText", widget: "string" }
+          - label: "Authors"
+            name: "authors"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - { label: "Partners text", name: "partnersText", widget: "string" }
+          - label: "Partners"
+            name: "partners"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+
+  - name: "products"
+    label: "Product"
+    folder: "content/frontpage/products"
     create: true
-    slug: "index"
-    media_folder: ""
-    public_folder: ""
-    path: "{{title}}/index"
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "id"
+        name: "id"
+        widget: "number"
+        valueType: "int"
+      - label: "Title (not shown outside CMS)"
+        name: "title"
+        widget: "string"
+        default: ""
+      - label: "timeToRead"
+        name: "timeToRead"
+        widget: "number"
+        valueType: "int"
+        default: 1,
+      - label: "Images"
+        name: "images"
+        widget: "object"
+        fields:
+          - label: "Default"
+            name: "default"
+            widget: image
+            media_folder: "../../../static/img/"
+            required: false
+          - label: "Diapositive"
+            name: "diapositive"
+            widget: image
+            media_folder: "../../../static/img/"
+            required: false
+          - label: "Mobile (broad) Image"
+            name: "mobile"
+            widget: image
+            media_folder: "../../../static/img/"
+            required: false
+      - label: "Buttons"
+        name: "buttons"
+        widget: "list"
+        fields:
+          - label: "Text"
+            name: "text"
+            widget: "string"
+            default: ""
+          - label: "Link"
+            name: "link"
+            widget: "string"
+            default: ""
+      - label: "Checkbox"
+        name: "checkbox"
+        widget: "object"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            default: ""
+          - label: "Text"
+            name: "text"
+            widget: "string"
+            default: ""
+          - label: "Mobile Nav Text"
+            name: "smallText"
+            widget: "string"
+            default: ""
+            required: true
+          - label: "Visible?"
+            name: "visible"
+            widget: "number"
+            valueType: "int"
+            default: 0
+            min: 0
+            max: 3
+            required: true
+      - label: "layout"
+        name: "layout"
+        widget: "select"
+        options:
+          - label: "Visual left, content right"
+            value: "horizontal-right"
+          - label: "Visual right, content left"
+            value: "horizontal-left"
+          - label: "Visual top, content bottom"
+            value: "vertical"
+        default: "horizontal-right"
+      - label: "Body Text"
+        name: "body"
+        widget: "markdown"
+        default: ""

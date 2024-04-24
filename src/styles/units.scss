@@ -1,0 +1,14 @@
+$unit: 1rem;
+$two: $unit * 2;
+$half: $unit * 0.5;
+
+$side-padding: $unit * 3;
+$side-padding-responsive: $unit;
+$max-width: 1240px;
+
+$border-width: 0.2rem;
+$underline-width: 0.1rem;
+
+$bp-small: 800px;
+$bp-medium: 900px;
+$bp-large: $max-width;

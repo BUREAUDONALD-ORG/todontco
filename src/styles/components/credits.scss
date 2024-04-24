@@ -1,0 +1,27 @@
+.credits__title {
+  @include t--header-2;
+  padding-bottom: $unit;
+  color: $day;
+}
+
+.credits__text p {
+  @include t--body-black;
+  color: $complementary;
+  max-width: 66%;
+}
+
+@media (min-width: 0px) and (max-width: $bp-medium) {
+  .credits__text p {
+    max-width: 100%;
+  }
+}
+
+.credits__text a:hover {
+  border-bottom: $underline-width solid $complementary;
+  margin-bottom: -$underline-width;
+}
+
+.credits__text a:hover {
+  color: $day;
+  border-bottom: $underline-width solid $day;
+}
