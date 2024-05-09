@@ -6,9 +6,9 @@ images:
   default: ../../../static/img/todontlist.png
   diapositive: ../../../static/img/todontlist_diap.png
 buttons:
-  - link: "https://itunes.apple.com/nl/app/todontlist/id1108348991?l=en&mt=8"
+  - link: https://itunes.apple.com/nl/app/todontlist/id1108348991?l=en&mt=8
     text: Download for iOS
-  - link: "https://play.google.com/store/apps/details?id=com.todontlist"
+  - link: https://play.google.com/store/apps/details?id=com.todontlist
     text: Download for Android
 checkbox:
   smallText: Planning
@@ -16,6 +16,7 @@ checkbox:
   title: ToDon’tList
   visible: 0
 layout: horizontal-left
+accentColor: "#e00763"
 ---
 
 # To&#8203;Don’t&#8203;List
